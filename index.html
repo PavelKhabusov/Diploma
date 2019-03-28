@@ -914,7 +914,7 @@
     <script>
         $(document).ready(function() {
             $('.glazing_slider').slick({
-                infinite: true,
+                infinite: false,
                 slidesToShow: 5,
                 slidesToScroll: 1,
                 responsive: [{
@@ -928,6 +928,7 @@
                 }, {
                     breakpoint: 992,
                     settings: {
+                      infinite: true,
                         slidesToShow: 3,
                         prevArrow: '<button class="prev arrow"></button>',
                         nextArrow: '<button class="next arrow"></button>',

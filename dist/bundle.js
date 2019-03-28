@@ -1962,6 +1962,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./parts/modal */ "./src/js/parts/modal.js");
 /* harmony import */ var _parts_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parts/popup */ "./src/js/parts/popup.js");
 /* harmony import */ var _parts_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/form */ "./src/js/parts/form.js");
+/* harmony import */ var _parts_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/tabs */ "./src/js/parts/tabs.js");
+
 
 
 
@@ -1984,6 +1986,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_modal__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_parts_popup__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_parts_form__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  Object(_parts_tabs__WEBPACK_IMPORTED_MODULE_3__["default"])();
 });
 
 /***/ }),
@@ -2027,7 +2030,7 @@ function form() {
     tel_mask.addEventListener('keypress', function () {
       var that = this;
       setTimeout(function () {
-        var res = /[^0-9+]/g.exec(that.value);
+        var res = /[^0-9]/g.exec(that.value);
         that.value = that.value.replace(res, '');
       }, 0);
     }, false);
@@ -2145,6 +2148,65 @@ function popup() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (popup);
+
+/***/ }),
+
+/***/ "./src/js/parts/tabs.js":
+/*!******************************!*\
+  !*** ./src/js/parts/tabs.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function tabs() {
+  'use strict'; // ----------
+  // ----- Tabs
+  // ----------
+
+  var tabs = document.querySelector('.glazing'),
+      tab = document.querySelectorAll('.glazing_block'),
+      info = tabs.querySelector('.glazing_slider'),
+      tabContent = tabs.querySelectorAll('.row');
+  console.log(tab);
+
+  function hideTabContent(a) {
+    for (var i = a; i < tabContent.length; i++) {
+      tabContent[i].classList.remove('show');
+      tabContent[i].classList.add('hide');
+    }
+  }
+
+  hideTabContent(1);
+
+  function showTabContent(b) {
+    if (tabContent[b].classList.contains('hide')) {
+      tabContent[b].classList.remove('hide');
+      tabContent[b].classList.add('show');
+    }
+  }
+
+  info.addEventListener('click', function (e) {
+    var tar = e.target;
+
+    while ((tar = tar.parentElement) && !tar.classList.contains('glazing_block')) {
+      ;
+    }
+
+    if (tar && tar.classList.contains('glazing_block')) {
+      for (var i = 0; i < tab.length; i++) {
+        if (tar == tab[i]) {
+          hideTabContent(0);
+          showTabContent(i);
+          break;
+        }
+      }
+    }
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (tabs);
 
 /***/ }),
 

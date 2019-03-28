@@ -17,7 +17,7 @@ function form() {
     tel_mask.addEventListener('keypress', function() {
       var that = this;
       setTimeout(function() {
-          var res = /[^0-9+]/g.exec(that.value);
+          var res = /[^0-9]/g.exec(that.value);
           that.value = that.value.replace(res, '');
       }, 0);
     }, false);

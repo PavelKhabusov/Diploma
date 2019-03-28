@@ -9,7 +9,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #000000;
+  color: #000;
 }
 a:hover {
   text-decoration: none;
@@ -28,7 +28,7 @@ textarea:focus {
   padding: 2rem 5rem;
   text-align: center;
   border-radius: 1rem;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .form h2 {
   margin-bottom: 3rem;
@@ -36,7 +36,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
   line-height: 1.5;
 }
 .form h2 span {
@@ -97,10 +97,12 @@ textarea:focus {
   font-style: normal;
   border: 1px solid #ffc600;
   border-radius: 1rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ffed26), to(#ffb400));
+  background: -webkit-linear-gradient(-90deg, #ffed26 0%, #ffb400 100%);
+  background: -moz-linear-gradient(-90deg, #ffed26 0%, #ffb400 100%);
+  background: -o-linear-gradient(-90deg, #ffed26 0%, #ffb400 100%);
+  background: -ms-linear-gradient(-90deg, #ffed26 0%, #ffb400 100%);
   background: linear-gradient(180deg, #ffed26 0%, #ffb400 100%);
-  -webkit-box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
-          box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
+  box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
 }
 .button:hover {
   cursor: pointer;
@@ -116,13 +118,12 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
 }
 .section_header_sub {
   margin-top: 2rem;
   margin-left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 17rem;
   height: 0.2rem;
   background: url(../img/glazing/line.png) 0 0 no-repeat;
@@ -130,8 +131,7 @@ textarea:focus {
 .arrow {
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   z-index: 99;
   width: 2rem;
   height: 2rem;
@@ -150,7 +150,7 @@ textarea:focus {
 /*Header*/
 .header {
   height: 10rem;
-  background-color: #ffffff;
+  background-color: #fff;
   /*border: 1px solid red;*/
 }
 .header .logo {
@@ -172,11 +172,11 @@ textarea:focus {
   color: #0089cd;
 }
 .header_btn {
-  background: #ffffff url(../img/header/edit.png) 1rem center no-repeat;
+  background: #fff url(../img/header/edit.png) 1rem center no-repeat;
   padding: 1rem 1rem 1rem 5rem;
   border: 2px solid #55a831;
   border-radius: 1rem;
-  background-color: #ffffff;
+  background-color: #fff;
   font-size: 1.4rem;
   line-height: 1.2;
   font-family: 'Open Sans', sans-serif;
@@ -223,7 +223,7 @@ textarea:focus {
   display: table-cell;
   vertical-align: middle;
   font-size: 1.4rem;
-  color: #333333;
+  color: #333;
 }
 .header .working_hours p span {
   font-family: 'Open Sans', sans-serif;
@@ -247,7 +247,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
   /*border: 1px solid blue;*/
 }
 .header .contact_us_wrap a img {
@@ -264,7 +264,7 @@ textarea:focus {
 /*Main*/
 .main {
   padding: 10rem 0;
-  background: #ffffff url(../img/main/bg.png) 0 0 no-repeat;
+  background: #fff url(../img/main/bg.png) 0 0 no-repeat;
 }
 .main h1 {
   margin: 0;
@@ -274,7 +274,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
 }
 .main h1 span {
   font-size: 2.6rem;
@@ -297,7 +297,7 @@ textarea:focus {
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #fff;
 }
 .main_form {
   margin-top: 2rem;
@@ -333,7 +333,10 @@ textarea:focus {
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   border-top: 0.5rem solid #0089cd;
-  background: -webkit-gradient(linear, left top, left bottom, from(#c7dce9), color-stop(0%, #c7dce9), to(rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(-90deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -moz-linear-gradient(-90deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(-90deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(-90deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
   background: linear-gradient(180deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
 }
 .glazing_cold h3 {
@@ -352,7 +355,10 @@ textarea:focus {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   border-top: 0.5rem solid #ffb903;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f7eac9), color-stop(0%, #f7eac9), to(rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(-90deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -moz-linear-gradient(-90deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(-90deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(-90deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
   background: linear-gradient(180deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
 }
 .glazing_warm h3 {
@@ -432,9 +438,9 @@ textarea:focus {
 .decoration_item a {
   font-size: 2rem;
   font-weight: 600;
-  color: #000000;
+  color: #000;
   text-transform: uppercase;
-  border-bottom: 1px dotted #000000;
+  border-bottom: 1px dotted #000;
 }
 .decoration_item a:hover {
   cursor: pointer;
@@ -462,7 +468,10 @@ textarea:focus {
   border-top: 1rem solid #0089cd;
   height: 8rem;
   padding: 2rem 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), color-stop(0%, #ebebeb), to(rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
+  background: -moz-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
+  background: -o-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
+  background: -ms-linear-gradient(-90deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
   background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 100%);
 }
 .decoration_content {
@@ -490,7 +499,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #000000;
+  color: #000;
 }
 .decoration .external,
 .decoration .rising,
@@ -509,11 +518,9 @@ textarea:focus {
   top: 0;
   left: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   top: 40%;
   opacity: 0;
-  -webkit-transition: ease 0.2s;
   transition: ease 0.2s;
 }
 .works a[data-fancybox="gallery"]:hover .lupa {
@@ -525,7 +532,7 @@ textarea:focus {
   background-color: #0089cd;
 }
 .guarantees_header h2 {
-  color: #ffffff;
+  color: #fff;
 }
 .guarantees_header_sub {
   background: url(../img/guarantees/header_sub.png) 0 0 no-repeat;
@@ -536,14 +543,13 @@ textarea:focus {
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 1.4;
-  color: #ffffff;
+  color: #fff;
 }
 .guarantees img {
   min-height: 7rem;
 }
 .guarantees_block:hover {
-  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 /*Payment*/
 .payment {
@@ -565,7 +571,7 @@ textarea:focus {
 /*Sale*/
 .sale {
   padding: 8rem 0;
-  background: #ffffff url(../img/sale/bg.jpg) center center no-repeat;
+  background: #fff url(../img/sale/bg.jpg) center center no-repeat;
 }
 .sale_title {
   margin-bottom: 8rem;
@@ -612,7 +618,7 @@ textarea:focus {
   margin-bottom: 3rem;
   font-size: 1.8rem;
   font-weight: 600;
-  color: #000000;
+  color: #000;
   text-decoration: underline;
 }
 .contacts .map {
@@ -627,12 +633,12 @@ textarea:focus {
   display: inline-block;
   margin-right: 4rem;
   font-size: 3rem;
-  color: #ffffff;
+  color: #fff;
 }
 .feedback_block a {
   font-size: 3rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #fff;
   text-decoration: underline;
 }
 .footer {
@@ -660,7 +666,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
 }
 .footer .contacts .email {
   font-size: 1.4rem;
@@ -686,10 +692,9 @@ textarea:focus {
   position: fixed;
   top: 10%;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 40rem;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .popup_close,
 .popup_engineer_close,
@@ -698,7 +703,7 @@ textarea:focus {
   top: -2.2rem;
   right: -5rem;
   font-size: 4rem;
-  color: #ffffff;
+  color: #fff;
   border: none;
   background: transparent;
 }
@@ -716,11 +721,10 @@ textarea:focus {
   position: fixed;
   top: 10%;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 40rem;
   padding: 1rem 0.5rem 4rem;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .popup_calc_content h2 {
   margin-bottom: 3rem;
@@ -728,7 +732,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
 }
 .popup_calc_content h3 {
   font-size: 2rem;
@@ -750,7 +754,7 @@ textarea:focus {
   top: -2.2rem;
   right: -5rem;
   font-size: 4rem;
-  color: #ffffff;
+  color: #fff;
   border: none;
   background: transparent;
 }
@@ -786,11 +790,10 @@ textarea:focus {
   position: fixed;
   top: 10%;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 40rem;
   padding: 1rem 5rem 4rem;
-  background-color: #ffffff;
+  background-color: #fff;
   /*	label {
 			margin-bottom: 1rem;
 			font-size: 1.5rem;
@@ -803,7 +806,7 @@ textarea:focus {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-style: normal;
-  color: #333333;
+  color: #333;
 }
 .popup_calc_profile_content h3 {
   font-size: 1.8rem;
@@ -846,30 +849,28 @@ textarea:focus {
 .popup_calc_profile_content .label {
   padding: 1.3rem 2rem;
   z-index: 18rem;
-  color: #000000;
+  color: #000;
   font-size: 1.5rem;
   font-weight: 500;
 }
 .popup_calc_profile_content img {
   display: block;
   margin-left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .popup_calc_profile_close {
   position: absolute;
   top: -2.2rem;
   right: -5rem;
   font-size: 4rem;
-  color: #ffffff;
+  color: #fff;
   border: none;
   background: transparent;
 }
 .popup_calc_profile_button {
   display: block;
   margin-left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   margin-top: 1rem;
   padding: 1rem 5rem;
 }
@@ -1032,7 +1033,7 @@ textarea:focus {
   }
   .sale {
     padding: 5rem 0;
-    background: #ffffff url(../img/sale/bg.jpg) right center no-repeat;
+    background: #fff url(../img/sale/bg.jpg) right center no-repeat;
     background-size: cover;
   }
   .sale_title {
@@ -1168,7 +1169,7 @@ textarea:focus {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-style: normal;
-    color: #333333;
+    color: #333;
   }
   .footer .contacts .email {
     font-size: 1.4rem;
@@ -1264,7 +1265,7 @@ textarea:focus {
   .main {
     padding: 3rem 0;
     padding-bottom: 5rem;
-    background: #ffffff url(../img/main/bg.png) 0 0 no-repeat;
+    background: #fff url(../img/main/bg.png) 0 0 no-repeat;
     background-size: cover;
   }
   .main h1 {
@@ -1288,8 +1289,6 @@ textarea:focus {
     display: none;
   }
   .glazing .show {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
   }
   .glazing_cold {
@@ -1384,7 +1383,7 @@ textarea:focus {
     top: -1rem;
     right: 1rem;
     font-size: 4rem;
-    color: #000000;
+    color: #000;
     border: none;
     background: transparent;
   }
@@ -1393,7 +1392,7 @@ textarea:focus {
     top: -1rem;
     right: 1rem;
     font-size: 4rem;
-    color: #000000;
+    color: #000;
     border: none;
     background: transparent;
   }
@@ -1448,7 +1447,7 @@ textarea:focus {
     top: -1rem;
     right: 1rem;
     font-size: 4rem;
-    color: #000000;
+    color: #000;
     border: none;
     background: transparent;
   }
@@ -1460,13 +1459,22 @@ textarea:focus {
 @media only screen and (max-width: 768px) {
   .animated {
     /*css transitions*/
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
     -webkit-transition-property: none !important;
     transition-property: none !important;
     /*css transforms*/
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
     -webkit-transform: none !important;
     transform: none !important;
     /*css animations*/
     -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
     animation: none !important;
   }
 }
