@@ -7,11 +7,12 @@ function tabs() {
       tab = document.querySelectorAll('.glazing_block'),
       info = tabs.querySelector('.glazing_slider'),
       tabContent = tabs.querySelectorAll('.row');
-  console.log(tab);
+
   function hideTabContent(a) {
     for (let i = a; i < tabContent.length; i++) {
       tabContent[i].classList.remove('show');
       tabContent[i].classList.add('hide');
+      tab[i].children[1].classList.remove('active');
     }
   }
 
@@ -21,6 +22,7 @@ function tabs() {
     if(tabContent[b].classList.contains('hide')) {
       tabContent[b].classList.remove('hide');
       tabContent[b].classList.add('show');
+      tab[b].children[1].classList.add('active');
     }
   }
   info.addEventListener('click', function(e) {
