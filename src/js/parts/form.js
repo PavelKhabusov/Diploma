@@ -1,4 +1,4 @@
-function modal_form() {
+function form() {
 	'use strict';
   // ----------
 	// ----- Modal Form
@@ -8,12 +8,19 @@ function modal_form() {
 		success: 'Отправлено!',
 		failure: 'Ошибка...' 
 	};
-	let modal_form = document.getElementsByClassName('main-form')[0],
-			modal_form_popup = document.getElementById('form'),
-			input = document.querySelectorAll('form input'),
+	let forms = document.querySelectorAll('.form'),
 			statusMessage = document.createElement('div');
 			statusMessage.classList.add('status');
 	function sendForm(elem) {
+    let input = elem.querySelectorAll('input');
+    let tel_mask = input[1];
+    tel_mask.addEventListener('keypress', function() {
+      var that = this;
+      setTimeout(function() {
+          var res = /[^0-9+]/g.exec(that.value);
+          that.value = that.value.replace(res, '');
+      }, 0);
+    }, false);
 		elem.addEventListener('submit', function(e) {
 			e.preventDefault();
 			elem.appendChild(statusMessage);
@@ -51,7 +58,8 @@ function modal_form() {
 				.then(clearInput)
 		});
 	}
-	sendForm(modal_form);
-	sendForm(modal_form_popup);
+	forms.forEach(function(item){
+    sendForm(item);
+  });
 }
-export default modal_form;
+export default form;
