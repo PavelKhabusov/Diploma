@@ -477,6 +477,12 @@ textarea:focus {
 .decoration_content {
   margin-top: 8rem;
 }
+.decoration_content .row .hide {
+  display: none;
+}
+.decoration_content .row .show {
+  display: block;
+}
 .decoration_content_material img {
   margin-top: 2.5rem;
 }
@@ -500,11 +506,6 @@ textarea:focus {
   font-weight: 400;
   font-style: normal;
   color: #000;
-}
-.decoration .external,
-.decoration .rising,
-.decoration .roof {
-  display: none;
 }
 /*Our works*/
 .works {

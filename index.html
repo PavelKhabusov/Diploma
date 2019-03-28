@@ -366,7 +366,7 @@
           <div class="row">
             
             <!-- internal -->
-            <div class="internal">
+            <div class="internal decoration_block">
               <div class="col-lg-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 no-padding">
                 <div class="decoration_img">
                   <img src="img/decoration/decoration_img.png" alt="">
@@ -424,7 +424,7 @@
             </div> <!-- /internal -->
 
             <!-- external -->
-            <div class="external">
+            <div class="external decoration_block">
               <div class="col-lg-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 no-padding">
                 <div class="decoration_img">
                   <img src="img/decoration/2/decoration2_img.png" alt="" style="margin-top: 3rem;">
@@ -483,7 +483,7 @@
             <!-- .external -->
 
             <!-- rising -->
-            <div class="rising">
+            <div class="rising decoration_block">
               <div class="col-lg-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 no-padding">
                 <div class="decoration_img">
                   <img src="img/decoration/3/decoration3_img.jpg" alt="" style="margin-top: 3rem;">
@@ -535,7 +535,7 @@
             <!-- /rising -->
 
             <!-- roof -->
-            <div class="roof">
+            <div class="roof decoration_block">
               <div class="col-lg-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 no-padding">
                 <div class="decoration_img">
                   <img src="img/decoration/4/decoration4_img.png" alt="" style="margin-top: 3rem;">
@@ -953,7 +953,7 @@
                 }]
             });
             $('.decoration_slider').slick({
-                infinite: true,
+                infinite: false,
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 responsive: [{
@@ -967,6 +967,7 @@
                 }, {
                     breakpoint: 992,
                     settings: {
+                      infinite: true,
                         slidesToShow: 2,
                         prevArrow: '<button class="prev arrow"></button>',
                         nextArrow: '<button class="next arrow"></button>',

@@ -1,6 +1,7 @@
 import modal from './parts/modal';
 import popup from './parts/popup';
 import form from './parts/form';
+import calc_tabs from './parts/calc_tabs';
 import tabs from './parts/tabs';
 if ('NodeList' in window && !NodeList.prototype.forEach) {
   console.info('polyfill for IE11');
@@ -18,5 +19,6 @@ window.addEventListener('DOMContentLoaded', function() {
   modal();
   popup();
   form();
+  calc_tabs();
   tabs();
 });

@@ -1962,7 +1962,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./parts/modal */ "./src/js/parts/modal.js");
 /* harmony import */ var _parts_popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parts/popup */ "./src/js/parts/popup.js");
 /* harmony import */ var _parts_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/form */ "./src/js/parts/form.js");
-/* harmony import */ var _parts_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/tabs */ "./src/js/parts/tabs.js");
+/* harmony import */ var _parts_calc_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/calc_tabs */ "./src/js/parts/calc_tabs.js");
+/* harmony import */ var _parts_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/tabs */ "./src/js/parts/tabs.js");
+
 
 
 
@@ -1986,8 +1988,69 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_modal__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_parts_popup__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_parts_form__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  Object(_parts_tabs__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_parts_calc_tabs__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_parts_tabs__WEBPACK_IMPORTED_MODULE_4__["default"])();
 });
+
+/***/ }),
+
+/***/ "./src/js/parts/calc_tabs.js":
+/*!***********************************!*\
+  !*** ./src/js/parts/calc_tabs.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function calc_tabs() {
+  'use strict'; // ----------
+  // ----- CalcTabs
+  // ----------
+
+  var tabs = document.querySelector('.glazing'),
+      tab = document.querySelectorAll('.glazing_block'),
+      info = tabs.querySelector('.glazing_slider'),
+      tabContent = tabs.querySelectorAll('.row');
+
+  function hideTabContent(a) {
+    for (var i = a; i < tabContent.length; i++) {
+      tabContent[i].classList.remove('show');
+      tabContent[i].classList.add('hide');
+      tab[i].children[1].classList.remove('active');
+    }
+  }
+
+  hideTabContent(1);
+
+  function showTabContent(b) {
+    if (tabContent[b].classList.contains('hide')) {
+      tabContent[b].classList.remove('hide');
+      tabContent[b].classList.add('show');
+      tab[b].children[1].classList.add('active');
+    }
+  }
+
+  info.addEventListener('click', function (e) {
+    var tar = e.target;
+
+    while ((tar = tar.parentElement) && !tar.classList.contains('glazing_block')) {
+      ;
+    }
+
+    if (tar && tar.classList.contains('glazing_block')) {
+      for (var i = 0; i < tab.length; i++) {
+        if (tar == tab[i]) {
+          hideTabContent(0);
+          showTabContent(i);
+          break;
+        }
+      }
+    }
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (calc_tabs);
 
 /***/ }),
 
@@ -2162,19 +2225,19 @@ function popup() {
 __webpack_require__.r(__webpack_exports__);
 function tabs() {
   'use strict'; // ----------
-  // ----- Tabs
+  // ----- CalcTabs
   // ----------
 
-  var tabs = document.querySelector('.glazing'),
-      tab = document.querySelectorAll('.glazing_block'),
-      info = tabs.querySelector('.glazing_slider'),
-      tabContent = tabs.querySelectorAll('.row');
+  var tabs = document.querySelector('.decoration'),
+      tab = tabs.querySelectorAll('.decoration_item'),
+      info = tabs.querySelector('.decoration_slider'),
+      tabContent = tabs.querySelectorAll('.decoration_block');
 
   function hideTabContent(a) {
     for (var i = a; i < tabContent.length; i++) {
       tabContent[i].classList.remove('show');
       tabContent[i].classList.add('hide');
-      tab[i].children[1].classList.remove('active');
+      tab[i].firstElementChild.classList.remove('after_click');
     }
   }
 
@@ -2184,18 +2247,18 @@ function tabs() {
     if (tabContent[b].classList.contains('hide')) {
       tabContent[b].classList.remove('hide');
       tabContent[b].classList.add('show');
-      tab[b].children[1].classList.add('active');
+      tab[b].firstElementChild.classList.add('after_click');
     }
   }
 
   info.addEventListener('click', function (e) {
     var tar = e.target;
 
-    while ((tar = tar.parentElement) && !tar.classList.contains('glazing_block')) {
+    while ((tar = tar.parentElement) && !tar.classList.contains('decoration_item')) {
       ;
     }
 
-    if (tar && tar.classList.contains('glazing_block')) {
+    if (tar && tar.classList.contains('decoration_item')) {
       for (var i = 0; i < tab.length; i++) {
         if (tar == tab[i]) {
           hideTabContent(0);
