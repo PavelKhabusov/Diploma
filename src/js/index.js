@@ -1,4 +1,5 @@
 import modal from './parts/modal';
+import popup from './parts/popup';
 if ('NodeList' in window && !NodeList.prototype.forEach) {
   console.info('polyfill for IE11');
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -13,4 +14,5 @@ window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
   modal();
+  popup();
 });
