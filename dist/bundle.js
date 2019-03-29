@@ -2300,15 +2300,19 @@ function modal() {
       overlay = document.querySelector('.popup_engineer'),
       overlayLink = document.querySelector('.popup');
 
+  function showModal(element) {
+    element.style.display = 'block';
+    element.classList.add('over');
+    document.body.parentElement.style.overflow = 'hidden';
+  }
+
   function openModal(elem, mod) {
     document.addEventListener('click', function (e) {
       var t = e.target;
 
       if (t && t.classList.contains(elem)) {
         e.preventDefault();
-        mod.style.display = 'block';
-        mod.classList.add('over');
-        document.body.parentElement.style.overflow = 'hidden';
+        showModal(mod);
       }
 
       while (t.tagName == 'STRONG') {
@@ -2325,6 +2329,7 @@ function modal() {
 
   openModal(more, overlay);
   openModal(moreLink, overlayLink);
+  setTimeout(showModal, 60000, overlayLink);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (modal);
