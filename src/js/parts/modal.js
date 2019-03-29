@@ -32,6 +32,6 @@ function modal() {
   openModal(more, overlay);
   openModal(moreLink, overlayLink);
 
-  setTimeout(showModal, 60000, overlayLink);
+  setTimeout(showModal, 5000, overlayLink);
 }
 export default modal;
