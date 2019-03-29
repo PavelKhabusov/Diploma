@@ -22,11 +22,18 @@ function modal() {
       if(t && t.classList.contains(elem)) {
         e.preventDefault();
         mod.style.display = 'block';
+        mod.classList.add('over');
         document.body.parentElement.style.overflow = 'hidden';
+      }
+      if(t && t.classList.contains('over')){
+        mod.style.display = 'none';
+        mod.classList.remove('over');
+        document.body.parentElement.style.overflow = '';
       }
     });
     clz.addEventListener('click', function() {
       mod.style.display = 'none';
+      mod.classList.remove('over');
       document.body.parentElement.style.overflow = '';
     });
   }
