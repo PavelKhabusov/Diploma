@@ -1,4 +1,4 @@
-function lightbox() {
+let lightbox = () => {
 	'use strict';	
   // --------------
 	// ----- Lightbox

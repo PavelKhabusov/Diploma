@@ -1,4 +1,4 @@
-function form() {
+let form = () => {
 	'use strict';
   // ----------------
 	// ----- Modal Form

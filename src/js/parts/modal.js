@@ -1,4 +1,4 @@
-function modal() {
+let modal = () => {
   'use strict';
   // -----------
 	// ----- Modal

@@ -1,6 +1,4 @@
-import { join } from "path";
-
-function calc() {
+let calc = () => {
   'use strict';
   // ----------------
 	// ----- Calculator
@@ -158,7 +156,5 @@ function calc() {
 			alert('Ошибка! Неверно введены данные!');
 		}
 	});
-
-// Third Popup
 }
 export default calc;

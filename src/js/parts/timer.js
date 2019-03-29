@@ -1,4 +1,4 @@
-function timer() {
+let timer = () => {
 	'use strict';	
   // -----------
 	// ----- Timer

@@ -14,7 +14,7 @@ if ('NodeList' in window && !NodeList.prototype.forEach) {
     }
   };
 }
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
   
   'use strict';
 

@@ -1,4 +1,4 @@
-function tabs() {
+let tabs = () => {
   'use strict';
   // --------------
 	// ----- CalcTabs
