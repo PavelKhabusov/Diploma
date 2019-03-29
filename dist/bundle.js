@@ -1963,6 +1963,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parts/form */ "./src/js/parts/form.js");
 /* harmony import */ var _parts_calc_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./parts/calc_tabs */ "./src/js/parts/calc_tabs.js");
 /* harmony import */ var _parts_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/tabs */ "./src/js/parts/tabs.js");
+/* harmony import */ var _parts_calc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/calc */ "./src/js/parts/calc.js");
+/* harmony import */ var _parts_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/timer */ "./src/js/parts/timer.js");
+
+
 
 
 
@@ -1987,7 +1991,91 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_form__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_parts_calc_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])();
   Object(_parts_tabs__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  Object(_parts_calc__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  Object(_parts_timer__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
+
+/***/ }),
+
+/***/ "./src/js/parts/calc.js":
+/*!******************************!*\
+  !*** ./src/js/parts/calc.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function calc() {
+  'use strict'; // ----------
+  // ----- Calculator
+  // ----------
+
+  var btn = 'glazing_price_btn',
+      modal = document.querySelector('.popup_calc'),
+      close = modal.querySelector('.popup_calc_close');
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+
+    if (t && t.classList.contains(btn)) {
+      modal.style.display = 'block';
+      document.body.parentElement.style.overflow = 'hidden';
+    }
+  });
+  close.addEventListener('click', function () {
+    modal.style.display = 'none';
+    document.body.parentElement.style.overflow = '';
+  }); // let persons = document.querySelectorAll('.counter-block-input')[0],
+  // 		restDays = document.querySelectorAll('.counter-block-input')[1],
+  // 		place = document.getElementById('select'),
+  // 		placeValue = 1,
+  // 		totalValue = document.getElementById('total'),
+  // 		personsSum = 0,
+  // 		daysSum = 0,
+  // 		total = 0;
+  // 		totalValue.innerHTML = 0;
+  // persons.addEventListener('change', function() {
+  // 	personsSum = +this.value;
+  // 	total = (daysSum * personsSum)*4000*placeValue;
+  // 	if (restDays.value == '' || persons.value == '') {
+  // 		totalValue.innerHTML = 0;
+  // 	} else {
+  // 		totalValue.innerHTML = total;
+  // 	}
+  // });
+  // persons.addEventListener('keypress', function(e) {
+  // 	var keycode = (e.keyCode ? e.keyCode : e.which);
+  //   if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
+  //       e.preventDefault();
+  //   }
+  // });
+  // restDays.addEventListener('change', function() {
+  // 	daysSum = +this.value;
+  // 	total = (daysSum * personsSum)*4000*placeValue;
+  // 	if (restDays.value == '' || persons.value == '') {
+  // 		totalValue.innerHTML = 0;
+  // 	} else {
+  // 		totalValue.innerHTML = total;
+  // 	}
+  // });
+  // restDays.addEventListener('keypress', function(e) {
+  // 	var keycode = (e.keyCode ? e.keyCode : e.which);
+  //   if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
+  //       e.preventDefault();
+  //   }
+  // });
+  // place.addEventListener('change', function() {
+  // 	placeValue = this.options[this.selectedIndex].value;
+  // 	if (restDays.value == '' || persons.value == '') {
+  // 		totalValue.innerHTML = 0;
+  // 	} else {
+  // 		let a = (daysSum * personsSum)*4000*placeValue;
+  // 		totalValue.innerHTML = a;
+  // 	}
+  // });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (calc);
 
 /***/ }),
 
@@ -2251,6 +2339,73 @@ function tabs() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (tabs);
+
+/***/ }),
+
+/***/ "./src/js/parts/timer.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/timer.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function timer() {
+  'use strict'; // -----------
+  // ----- Timer
+  // -----------
+
+  var deadline = '2019-04-05';
+
+  function getTimeRemaining(endtime) {
+    var t = Date.parse(endtime) - Date.parse(new Date()),
+        seconds = Math.floor(t / 1000 % 60),
+        minutes = Math.floor(t / 1000 / 60 % 60),
+        hours = Math.floor(t / 1000 / 60 / 60 % 24),
+        days = Math.floor(t / 1000 / 60 / 60 / 24);
+    if (seconds < 10) seconds = '0' + seconds;
+    if (minutes < 10) minutes = '0' + minutes;
+    if (hours < 10) hours = '0' + hours;
+    if (days < 10) days = '0' + days;
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+  }
+
+  function setClock(id, endtime) {
+    var timer = document.getElementById(id),
+        days = timer.querySelector('.days'),
+        hours = timer.querySelector('.hours'),
+        minutes = timer.querySelector('.minutes'),
+        seconds = timer.querySelector('.seconds'),
+        timeInterval = setInterval(updateClock, 1000);
+
+    function updateClock() {
+      var t = getTimeRemaining(endtime);
+      days.textContent = t.days;
+      hours.textContent = t.hours;
+      minutes.textContent = t.minutes;
+      seconds.textContent = t.seconds;
+
+      if (t.total <= 0) {
+        clearInterval(timeInterval);
+        days.textContent = '00';
+        hours.textContent = '00';
+        minutes.textContent = '00';
+        seconds.textContent = '00';
+      }
+    }
+  }
+
+  setClock('timer', deadline);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (timer);
 
 /***/ }),
 

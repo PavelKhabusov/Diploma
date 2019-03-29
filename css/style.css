@@ -582,8 +582,35 @@ textarea:focus {
   font-size: 2.4rem;
   line-height: 1.6;
 }
-.sale .eTimer {
+.sale .timer {
+  background-color: #fff;
+  border: 1px solid #575757;
+  border-radius: 10px;
   text-align: center;
+  padding: 20px;
+}
+.sale .timer h3 {
+  text-transform: uppercase;
+  margin-top: 0;
+}
+.sale .timer .eTimer {
+  padding-top: 10px;
+  text-align: center;
+}
+.sale .timer .eTimer div {
+  display: inline-block;
+  padding: 2px;
+}
+.sale .timer .eTimer div span {
+  border-radius: 5px;
+  background-color: #575757;
+  color: #fff;
+  font-size: 25px;
+  padding: 5px;
+}
+.sale .timer .eTimer div p {
+  margin-bottom: 0;
+  padding-top: 5px;
 }
 /*Contacts*/
 .contacts {
