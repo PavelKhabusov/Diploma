@@ -1,5 +1,4 @@
 import modal from './parts/modal';
-import popup from './parts/popup';
 import form from './parts/form';
 import calc_tabs from './parts/calc_tabs';
 import tabs from './parts/tabs';
@@ -17,7 +16,6 @@ window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
   modal();
-  popup();
   form();
   calc_tabs();
   tabs();
