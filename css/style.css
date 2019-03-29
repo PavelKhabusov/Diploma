@@ -784,13 +784,19 @@ textarea:focus {
 .popup_calc_content .balcon_icons {
   margin-bottom: 1rem;
 }
+.popup_calc_content .balcon_icons img {
+  width: 20%;
+}
+.popup_calc_content .balcon_icons .active img {
+  width: 30%;
+}
 .popup_calc_content .big_img img {
-  display: none;
+  display: inline-block;
   margin-bottom: 3rem;
   width: 30rem;
 }
-.popup_calc_content #type1 {
-  display: inline-block;
+.popup_calc_content .show {
+  display: inline-block !important;
 }
 .popup_calc_close {
   position: absolute;
@@ -1458,15 +1464,9 @@ textarea:focus {
   .popup_calc_content .balcon_icons {
     margin-bottom: 1rem;
   }
-  .popup_calc_content .balcon_icons img {
-    width: 20%;
-  }
   .popup_calc_content .big_img img {
     margin-bottom: 2rem;
     width: 25rem;
-  }
-  .popup_calc_content #type1 {
-    display: inline-block;
   }
   .popup_calc_button {
     padding: 1rem 5rem;

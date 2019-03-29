@@ -761,15 +761,21 @@ a, button, input, textarea {
 			margin-bottom: 3rem;
 		}
 		.balcon_icons {
-			margin-bottom: 1rem; 
+			margin-bottom: 1rem;
+			img {
+				width: 20%;
+			}
+			.active img {
+				width: 30%;
+			}
 		}
 		.big_img img {
-			display: none;
+			display: inline-block;
 			margin-bottom: 3rem;
 			width: 30rem;
 		}
-		#type1 {
-			display: inline-block;
+		.show {
+			display: inline-block !important;
 		}
 	}
 	&_close {
@@ -1516,15 +1522,10 @@ a, button, input, textarea {
 			.balcon_icons {
 				margin-bottom: 1rem; 
 			}
-			.balcon_icons img{
-				width: 20%;
-			}
+			
 			.big_img img {
 				margin-bottom: 2rem;
 				width: 25rem;
-			}
-			#type1 {
-				display: inline-block;
 			}
 		}
 		&_button {

@@ -1,12 +1,16 @@
+import { join } from "path";
+
 function calc() {
   'use strict';
   // ----------------
 	// ----- Calculator
 	// ----------------
-  let btn = 'glazing_price_btn',
+  
+// First Popup
+	// Open 
+	let btn = 'glazing_price_btn',
       modal = document.querySelector('.popup_calc'),
       close = modal.querySelector('.popup_calc_close');
-
   document.addEventListener('click', function(e) {
     let t = e.target;
     if(t && t.classList.contains(btn)) {
@@ -17,6 +21,40 @@ function calc() {
   close.addEventListener('click', function() {
     modal.style.display = 'none';
     document.body.parentElement.style.overflow = '';
+	});
+
+	// Tabs
+	let info = modal.querySelector('.balcon_icons'),
+      tab = info.querySelectorAll('a'),
+      tabContent = modal.querySelectorAll('.big_img img');
+  let hideTabContent = a => {
+    for (let i = a; i < tabContent.length; i++) {
+      tabContent[i].classList.remove('show');
+			tabContent[i].classList.add('hide');
+			tab[i].classList.remove('active');
+    }
+  }
+  hideTabContent(1);
+  let showTabContent = b => {
+    if(tabContent[b].classList.contains('hide')) {
+      tabContent[b].classList.remove('hide');
+			tabContent[b].classList.add('show');
+			tab[b].classList.add('active');
+    }
+  }
+  modal.addEventListener('click', function(e) {
+    let tar = e.target;
+    while ((tar = tar.parentElement) && !tar.tagName=='A');
+    if(tar && tar.tagName=='A') {
+			e.preventDefault();
+      for(let i = 0; i < tab.length; i++) {
+        if(tar == tab[i]) {
+          hideTabContent(0);
+          showTabContent(i);
+          break;
+        }
+      }
+    }
   });
   // let persons = document.querySelectorAll('.counter-block-input')[0],
 	// 		restDays = document.querySelectorAll('.counter-block-input')[1],

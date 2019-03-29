@@ -8,7 +8,7 @@ function calc_tabs() {
       info = tabs.querySelector('.glazing_slider'),
       tabContent = tabs.querySelectorAll('.row');
 
-  function hideTabContent(a) {
+  let hideTabContent = a => {
     for (let i = a; i < tabContent.length; i++) {
       tabContent[i].classList.remove('show');
       tabContent[i].classList.add('hide');
@@ -18,7 +18,7 @@ function calc_tabs() {
 
   hideTabContent(1);
 
-  function showTabContent(b) {
+  let showTabContent = b => {
     if(tabContent[b].classList.contains('hide')) {
       tabContent[b].classList.remove('hide');
       tabContent[b].classList.add('show');
