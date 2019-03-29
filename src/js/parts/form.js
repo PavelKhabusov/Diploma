@@ -25,7 +25,12 @@ function form() {
 			e.preventDefault();
 			elem.appendChild(statusMessage);
 			let formData = new FormData(elem);
-
+			if(Information.windowWidth != '') {
+				for ( var key in Information ) {
+					formData.append(key, Information[key]);
+					Information[key] = '';
+				}
+			}
 			function postData(data) {
 				return new Promise(function(resolve, reject) {
 					let request = new XMLHttpRequest();
@@ -42,9 +47,8 @@ function form() {
 								reject()
 							}
 					}
-					
 					request.send(data);
-				})
+				});
 			}
 			function clearInput() {
 				for(let i = 0; i < input.length; i++) {

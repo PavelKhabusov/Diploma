@@ -4,9 +4,9 @@ function modal() {
 	// ----- Modal
 	// -----------
 	let more = 'popup_engineer_btn',
-	moreLink = 'phone_link',
-  overlay = document.querySelector('.popup_engineer'),
-  overlayLink = document.querySelector('.popup');
+      moreLink = 'phone_link',
+      overlay = document.querySelector('.popup_engineer'),
+      overlayLink = document.querySelector('.popup');
 
   function showModal(element) {
     element.style.display = 'block';

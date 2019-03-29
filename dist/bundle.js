@@ -2448,12 +2448,66 @@ function calc() {
   'use strict'; // ----------------
   // ----- Calculator
   // ----------------
-  // First Popup
-  // Open 
+  // Main Object
+
+  window.Information = {
+    windowType: '',
+    windowWidth: '',
+    windowHeight: '',
+    glazing: '',
+    temperature: ''
+  }; // Variables
 
   var btn = 'glazing_price_btn',
       modal = document.querySelector('.popup_calc'),
-      close = modal.querySelector('.popup_calc_close');
+      close = modal.querySelector('.popup_calc_close'),
+      info = modal.querySelector('.balcon_icons'),
+      tab = info.querySelectorAll('a'),
+      tabContent = modal.querySelectorAll('.big_img img'),
+      width = modal.querySelector('#width'),
+      height = modal.querySelector('#height'),
+      profileButton = modal.querySelector('.popup_calc_button'),
+      profile = document.querySelector('.popup_calc_profile'),
+      profileClose = profile.querySelector('.popup_calc_profile_close'),
+      profileSelect = profile.querySelector('select'),
+      profileCheck = profile.querySelectorAll('input[type="checkbox"]'),
+      endButton = profile.querySelector('.popup_calc_profile_button'),
+      end = document.querySelector('.popup_calc_end'),
+      endClose = end.querySelector('.popup_calc_end_close'),
+      endInputs = end.querySelectorAll('input'); // Close
+
+  var Close = function Close(popup, btn) {
+    btn.addEventListener('click', function () {
+      popup.style.display = 'none';
+      document.body.parentElement.style.overflow = '';
+      width.value = '';
+      height.value = '';
+
+      for (var key in Information) {
+        Information[key] = '';
+      }
+
+      for (var i = 0; i < tabContent.length; i++) {
+        tab[i].classList.remove('active');
+      }
+
+      profileSelect[0].selected = true;
+      profileCheck[0].checked = false;
+      profileCheck[1].checked = false;
+
+      for (var _i = 0; _i < endInputs.length; _i++) {
+        endInputs[_i].value = '';
+      }
+
+      end.querySelector('.status').remove();
+    });
+  };
+
+  Close(modal, close);
+  Close(profile, profileClose);
+  Close(end, endClose); // First Popup
+  // Open
+
   document.addEventListener('click', function (e) {
     var t = e.target;
 
@@ -2461,15 +2515,7 @@ function calc() {
       modal.style.display = 'block';
       document.body.parentElement.style.overflow = 'hidden';
     }
-  });
-  close.addEventListener('click', function () {
-    modal.style.display = 'none';
-    document.body.parentElement.style.overflow = '';
   }); // Tabs
-
-  var info = modal.querySelector('.balcon_icons'),
-      tab = info.querySelectorAll('a'),
-      tabContent = modal.querySelectorAll('.big_img img');
 
   var hideTabContent = function hideTabContent(a) {
     for (var i = a; i < tabContent.length; i++) {
@@ -2503,58 +2549,69 @@ function calc() {
         if (tar == tab[i]) {
           hideTabContent(0);
           showTabContent(i);
+          Information.windowType = i + 1;
           break;
         }
       }
     }
-  }); // let persons = document.querySelectorAll('.counter-block-input')[0],
-  // 		restDays = document.querySelectorAll('.counter-block-input')[1],
-  // 		place = document.getElementById('select'),
-  // 		placeValue = 1,
-  // 		totalValue = document.getElementById('total'),
-  // 		personsSum = 0,
-  // 		daysSum = 0,
-  // 		total = 0;
-  // 		totalValue.innerHTML = 0;
-  // persons.addEventListener('change', function() {
-  // 	personsSum = +this.value;
-  // 	total = (daysSum * personsSum)*4000*placeValue;
-  // 	if (restDays.value == '' || persons.value == '') {
-  // 		totalValue.innerHTML = 0;
-  // 	} else {
-  // 		totalValue.innerHTML = total;
-  // 	}
-  // });
-  // persons.addEventListener('keypress', function(e) {
-  // 	var keycode = (e.keyCode ? e.keyCode : e.which);
-  //   if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
-  //       e.preventDefault();
-  //   }
-  // });
-  // restDays.addEventListener('change', function() {
-  // 	daysSum = +this.value;
-  // 	total = (daysSum * personsSum)*4000*placeValue;
-  // 	if (restDays.value == '' || persons.value == '') {
-  // 		totalValue.innerHTML = 0;
-  // 	} else {
-  // 		totalValue.innerHTML = total;
-  // 	}
-  // });
-  // restDays.addEventListener('keypress', function(e) {
-  // 	var keycode = (e.keyCode ? e.keyCode : e.which);
-  //   if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
-  //       e.preventDefault();
-  //   }
-  // });
-  // place.addEventListener('change', function() {
-  // 	placeValue = this.options[this.selectedIndex].value;
-  // 	if (restDays.value == '' || persons.value == '') {
-  // 		totalValue.innerHTML = 0;
-  // 	} else {
-  // 		let a = (daysSum * personsSum)*4000*placeValue;
-  // 		totalValue.innerHTML = a;
-  // 	}
-  // });
+  }); // Width & Height
+
+  width.addEventListener('change', function () {
+    Information.windowWidth = width.value;
+  });
+  width.addEventListener('keypress', function (e) {
+    var keycode = e.keyCode ? e.keyCode : e.which;
+
+    if (/\D/.test(String.fromCharCode(keycode))) {
+      // a non–digit was entered
+      e.preventDefault();
+    }
+  });
+  height.addEventListener('change', function () {
+    Information.windowHeight = height.value;
+  });
+  height.addEventListener('keypress', function (e) {
+    var keycode = e.keyCode ? e.keyCode : e.which;
+
+    if (/\D/.test(String.fromCharCode(keycode))) {
+      // a non–digit was entered
+      e.preventDefault();
+    }
+  }); // Next Button 
+
+  profileButton.addEventListener('click', function () {
+    if (Information.windowType != '' && Information.windowWidth != '' && Information.windowHeight != '') {
+      modal.style.display = 'none';
+      profile.style.display = 'block';
+    } else {
+      alert('Ошибка! Неверно введены данные!');
+    }
+  }); // Second Popup
+  // Select
+
+  profileSelect.addEventListener('change', function () {
+    Information.glazing = this.options[this.selectedIndex].value;
+  }); // Checkboxes
+
+  profileCheck.forEach(function (item, i, arr) {
+    item.addEventListener('change', function () {
+      if (item.checked) {
+        arr[i == 0 ? 1 : 0].checked = false;
+        Information.temperature = i ? 'warm' : 'cold';
+      } else {
+        Information.temperature = '';
+      }
+    });
+  }); // Next Button 
+
+  endButton.addEventListener('click', function () {
+    if (Information.temperature != '' && Information.glazing != '') {
+      profile.style.display = 'none';
+      end.style.display = 'block';
+    } else {
+      alert('Ошибка! Неверно введены данные!');
+    }
+  }); // Third Popup
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (calc);
@@ -2668,6 +2725,13 @@ function form() {
       e.preventDefault();
       elem.appendChild(statusMessage);
       var formData = new FormData(elem);
+
+      if (Information.windowWidth != '') {
+        for (var key in Information) {
+          formData.append(key, Information[key]);
+          Information[key] = '';
+        }
+      }
 
       function postData(data) {
         return new Promise(function (resolve, reject) {
