@@ -1965,6 +1965,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parts_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./parts/tabs */ "./src/js/parts/tabs.js");
 /* harmony import */ var _parts_calc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parts/calc */ "./src/js/parts/calc.js");
 /* harmony import */ var _parts_timer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parts/timer */ "./src/js/parts/timer.js");
+/* harmony import */ var _parts_lightbox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./parts/lightbox */ "./src/js/parts/lightbox.js");
+
 
 
 
@@ -1993,6 +1995,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_parts_tabs__WEBPACK_IMPORTED_MODULE_3__["default"])();
   Object(_parts_calc__WEBPACK_IMPORTED_MODULE_4__["default"])();
   Object(_parts_timer__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  Object(_parts_lightbox__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 
 /***/ }),
@@ -2007,9 +2010,9 @@ window.addEventListener('DOMContentLoaded', function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function calc() {
-  'use strict'; // ----------
+  'use strict'; // ----------------
   // ----- Calculator
-  // ----------
+  // ----------------
 
   var btn = 'glazing_price_btn',
       modal = document.querySelector('.popup_calc'),
@@ -2089,9 +2092,9 @@ function calc() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function calc_tabs() {
-  'use strict'; // ----------
+  'use strict'; // --------------
   // ----- CalcTabs
-  // ----------
+  // --------------
 
   var tabs = document.querySelector('.glazing'),
       tab = document.querySelectorAll('.glazing_block'),
@@ -2159,9 +2162,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function form() {
-  'use strict'; // ----------
+  'use strict'; // ----------------
   // ----- Modal Form
-  // ----------
+  // ----------------
 
   var message = {
     loading: 'Идет отправка...',
@@ -2232,6 +2235,52 @@ function form() {
 
 /***/ }),
 
+/***/ "./src/js/parts/lightbox.js":
+/*!**********************************!*\
+  !*** ./src/js/parts/lightbox.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function lightbox() {
+  'use strict'; // --------------
+  // ----- Lightbox
+  // --------------
+
+  var overlay = document.createElement('div'),
+      works = document.querySelector('.works');
+  overlay.classList.add('works_overlay');
+  works.addEventListener('click', function (e) {
+    var t = e.target;
+
+    if (t && t.tagName == 'IMG' && !t.classList.contains('lupa')) {
+      e.preventDefault();
+      overlay.innerHTML = '';
+      var block = document.createElement('img'),
+          tsrc = t.getAttribute('src');
+      tsrc = tsrc.slice(0, 13) + "/big_img" + tsrc.slice(13, tsrc.length);
+      block.setAttribute("src", tsrc);
+      overlay.appendChild(block);
+      document.body.appendChild(overlay);
+      document.body.parentElement.style.overflow = 'hidden';
+    }
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+
+    if (t && t.classList.contains('works_overlay')) {
+      overlay.parentElement.removeChild(overlay);
+      document.body.parentElement.style.overflow = '';
+    }
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (lightbox);
+
+/***/ }),
+
 /***/ "./src/js/parts/modal.js":
 /*!*******************************!*\
   !*** ./src/js/parts/modal.js ***!
@@ -2292,9 +2341,9 @@ function modal() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function tabs() {
-  'use strict'; // ----------
+  'use strict'; // --------------
   // ----- CalcTabs
-  // ----------
+  // --------------
 
   var tabs = document.querySelector('.decoration'),
       tab = tabs.querySelectorAll('.decoration_item'),

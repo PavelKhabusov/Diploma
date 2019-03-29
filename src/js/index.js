@@ -4,6 +4,7 @@ import calc_tabs from './parts/calc_tabs';
 import tabs from './parts/tabs';
 import calc from './parts/calc';
 import timer from './parts/timer';
+import lightbox from './parts/lightbox';
 if ('NodeList' in window && !NodeList.prototype.forEach) {
   console.info('polyfill for IE11');
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -23,4 +24,5 @@ window.addEventListener('DOMContentLoaded', function() {
   tabs();
   calc();
   timer();
+  lightbox();
 });

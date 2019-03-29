@@ -265,6 +265,7 @@ textarea:focus {
 .main {
   padding: 10rem 0;
   background: #ffffff url(../img/main/bg.png) 0 0 no-repeat;
+  background-size: cover;
 }
 .main h1 {
   margin: 0;
@@ -502,23 +503,41 @@ textarea:focus {
 .works {
   padding: 5rem 0;
 }
+.works div {
+  position: relative;
+}
 .works img {
   margin-bottom: 3rem;
 }
-.works a[data-fancybox="gallery"] .lupa {
+.works a .lupa {
+  pointer-events: none;
   position: absolute;
-  top: 0;
-  left: 0;
   left: 50%;
+  top: 40%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  top: 40%;
   opacity: 0;
   -webkit-transition: ease 0.2s;
   transition: ease 0.2s;
 }
-.works a[data-fancybox="gallery"]:hover .lupa {
+.works a:hover .lupa {
   opacity: 1;
+}
+.works_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.works_overlay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
 }
 /*Guarantees*/
 .guarantees {

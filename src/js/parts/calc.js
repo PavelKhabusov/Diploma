@@ -1,8 +1,8 @@
 function calc() {
   'use strict';
-  // ----------
+  // ----------------
 	// ----- Calculator
-	// ----------
+	// ----------------
   let btn = 'glazing_price_btn',
       modal = document.querySelector('.popup_calc'),
       close = modal.querySelector('.popup_calc_close');

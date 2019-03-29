@@ -1,8 +1,8 @@
 function calc_tabs() {
   'use strict';
-  // ----------
+  // --------------
 	// ----- CalcTabs
-	// ----------
+	// --------------
   let tabs = document.querySelector('.glazing'),
       tab = document.querySelectorAll('.glazing_block'),
       info = tabs.querySelector('.glazing_slider'),

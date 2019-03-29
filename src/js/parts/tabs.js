@@ -1,8 +1,8 @@
 function tabs() {
   'use strict';
-  // ----------
+  // --------------
 	// ----- CalcTabs
-	// ----------
+	// --------------
   let tabs = document.querySelector('.decoration'),
       tab = tabs.querySelectorAll('.decoration_item'),
       info = tabs.querySelector('.decoration_slider'),
