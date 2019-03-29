@@ -12,10 +12,12 @@ function lightbox() {
     if(t && t.tagName == 'IMG' && !t.classList.contains('lupa')){
       e.preventDefault();
       overlay.innerHTML = '';
+
       let block = document.createElement('img'),
           tsrc = t.getAttribute('src');
           tsrc = tsrc.slice(0, 13) + "/big_img" + tsrc.slice(13, tsrc.length);
           block.setAttribute("src", tsrc);
+          
       overlay.appendChild(block);
       document.body.appendChild(overlay);
       document.body.parentElement.style.overflow = 'hidden';

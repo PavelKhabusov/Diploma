@@ -2329,7 +2329,7 @@ function modal() {
 
   openModal(more, overlay);
   openModal(moreLink, overlayLink);
-  setTimeout(showModal, 5000, overlayLink);
+  setTimeout(showModal, 60000, overlayLink);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (modal);
@@ -2412,7 +2412,7 @@ function timer() {
 
   var deadline = '2019-04-05';
 
-  function getTimeRemaining(endtime) {
+  var getTimeRemaining = function getTimeRemaining(endtime) {
     var t = Date.parse(endtime) - Date.parse(new Date()),
         seconds = Math.floor(t / 1000 % 60),
         minutes = Math.floor(t / 1000 / 60 % 60),
@@ -2429,17 +2429,15 @@ function timer() {
       'minutes': minutes,
       'seconds': seconds
     };
-  }
+  };
 
-  function setClock(id, endtime) {
+  var setClock = function setClock(id, endtime) {
     var timer = document.getElementById(id),
         days = timer.querySelector('.days'),
         hours = timer.querySelector('.hours'),
         minutes = timer.querySelector('.minutes'),
-        seconds = timer.querySelector('.seconds'),
-        timeInterval = setInterval(updateClock, 1000);
-
-    function updateClock() {
+        seconds = timer.querySelector('.seconds');
+    var timeInterval = setInterval(function () {
       var t = getTimeRemaining(endtime);
       days.textContent = t.days;
       hours.textContent = t.hours;
@@ -2453,8 +2451,8 @@ function timer() {
         minutes.textContent = '00';
         seconds.textContent = '00';
       }
-    }
-  }
+    }, 1000);
+  };
 
   setClock('timer', deadline);
 }
