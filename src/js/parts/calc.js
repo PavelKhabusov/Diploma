@@ -1,3 +1,4 @@
+import tab from './tab';
 let calc = () => {
   'use strict';
   // ----------------
@@ -17,7 +18,7 @@ let calc = () => {
       modal = document.querySelector('.popup_calc'),
 			close = modal.querySelector('.popup_calc_close'),
 			info = modal.querySelector('.balcon_icons'),
-      tab = info.querySelectorAll('a'),
+      item = info.querySelectorAll('a'),
 			tabContent = modal.querySelectorAll('.big_img img'),
 			width = modal.querySelector('#width'),
 			height = modal.querySelector('#height'), 
@@ -43,7 +44,7 @@ let calc = () => {
 				Information[key] = '';
 			}
 			for (let i = 0; i < tabContent.length; i++) {
-				tab[i].classList.remove('active');
+				item[i].classList.remove('active');
 			}
 			profileSelect[0].selected = true;
 			profileCheck[0].checked = false;
@@ -51,7 +52,7 @@ let calc = () => {
 			for(let i = 0; i < endInputs.length; i++) {
 				endInputs[i].value = '';
 			}
-			end.querySelector('.status').remove();
+			if(end.querySelector('.status')) end.querySelector('.status').remove();
 		});
 	}
 	Close(modal, close);
@@ -68,36 +69,8 @@ let calc = () => {
   });
   
 	// Tabs
-  let hideTabContent = a => {
-    for (let i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove('show');
-			tabContent[i].classList.add('hide');
-			tab[i].classList.remove('active');
-    }
-  }
-  hideTabContent(1);
-  let showTabContent = b => {
-    if(tabContent[b].classList.contains('hide')) {
-      tabContent[b].classList.remove('hide');
-			tabContent[b].classList.add('show');
-			tab[b].classList.add('active');
-    }
-  }
-  modal.addEventListener('click', function(e) {
-    let tar = e.target;
-    while ((tar = tar.parentElement) && !tar.tagName=='A');
-    if(tar && tar.tagName=='A') {
-			e.preventDefault();
-      for(let i = 0; i < tab.length; i++) {
-        if(tar == tab[i]) {
-          hideTabContent(0);
-					showTabContent(i);
-					Information.windowType = i+1;
-          break;
-        }
-      }
-    }
-  });
+	tab(tabContent, item, info, 'A', 2);
+
   // Width & Height
 	width.addEventListener('change', () => {
 		Information.windowWidth = width.value;

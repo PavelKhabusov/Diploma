@@ -2009,6 +2009,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tab */ "./src/js/parts/tab.js");
+
+
 var calc = function calc() {
   'use strict'; // ----------------
   // ----- Calculator
@@ -2027,7 +2030,7 @@ var calc = function calc() {
       modal = document.querySelector('.popup_calc'),
       close = modal.querySelector('.popup_calc_close'),
       info = modal.querySelector('.balcon_icons'),
-      tab = info.querySelectorAll('a'),
+      item = info.querySelectorAll('a'),
       tabContent = modal.querySelectorAll('.big_img img'),
       width = modal.querySelector('#width'),
       height = modal.querySelector('#height'),
@@ -2053,7 +2056,7 @@ var calc = function calc() {
       }
 
       for (var i = 0; i < tabContent.length; i++) {
-        tab[i].classList.remove('active');
+        item[i].classList.remove('active');
       }
 
       profileSelect[0].selected = true;
@@ -2064,7 +2067,7 @@ var calc = function calc() {
         endInputs[_i].value = '';
       }
 
-      end.querySelector('.status').remove();
+      if (end.querySelector('.status')) end.querySelector('.status').remove();
     });
   };
 
@@ -2082,44 +2085,7 @@ var calc = function calc() {
     }
   }); // Tabs
 
-  var hideTabContent = function hideTabContent(a) {
-    for (var i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove('show');
-      tabContent[i].classList.add('hide');
-      tab[i].classList.remove('active');
-    }
-  };
-
-  hideTabContent(1);
-
-  var showTabContent = function showTabContent(b) {
-    if (tabContent[b].classList.contains('hide')) {
-      tabContent[b].classList.remove('hide');
-      tabContent[b].classList.add('show');
-      tab[b].classList.add('active');
-    }
-  };
-
-  modal.addEventListener('click', function (e) {
-    var tar = e.target;
-
-    while ((tar = tar.parentElement) && !tar.tagName == 'A') {
-      ;
-    }
-
-    if (tar && tar.tagName == 'A') {
-      e.preventDefault();
-
-      for (var i = 0; i < tab.length; i++) {
-        if (tar == tab[i]) {
-          hideTabContent(0);
-          showTabContent(i);
-          Information.windowType = i + 1;
-          break;
-        }
-      }
-    }
-  }); // Width & Height
+  Object(_tab__WEBPACK_IMPORTED_MODULE_0__["default"])(tabContent, item, info, 'A', 2); // Width & Height
 
   width.addEventListener('change', function () {
     Information.windowWidth = width.value;
@@ -2192,51 +2158,19 @@ var calc = function calc() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tab */ "./src/js/parts/tab.js");
+
+
 var calc_tabs = function calc_tabs() {
   'use strict'; // --------------
   // ----- CalcTabs
   // --------------
 
   var tabs = document.querySelector('.glazing'),
-      tab = document.querySelectorAll('.glazing_block'),
+      item = document.querySelectorAll('.glazing_block'),
       info = tabs.querySelector('.glazing_slider'),
       tabContent = tabs.querySelectorAll('.row');
-
-  var hideTabContent = function hideTabContent(a) {
-    for (var i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove('show');
-      tabContent[i].classList.add('hide');
-      tab[i].children[1].classList.remove('active');
-    }
-  };
-
-  hideTabContent(1);
-
-  var showTabContent = function showTabContent(b) {
-    if (tabContent[b].classList.contains('hide')) {
-      tabContent[b].classList.remove('hide');
-      tabContent[b].classList.add('show');
-      tab[b].children[1].classList.add('active');
-    }
-  };
-
-  info.addEventListener('click', function (e) {
-    var tar = e.target;
-
-    while ((tar = tar.parentElement) && !tar.classList.contains('glazing_block')) {
-      ;
-    }
-
-    if (tar && tar.classList.contains('glazing_block')) {
-      for (var i = 0; i < tab.length; i++) {
-        if (tar == tab[i]) {
-          hideTabContent(0);
-          showTabContent(i);
-          break;
-        }
-      }
-    }
-  });
+  Object(_tab__WEBPACK_IMPORTED_MODULE_0__["default"])(tabContent, item, info, 'glazing_block', 1);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calc_tabs);
@@ -2444,6 +2378,92 @@ var modal = function modal() {
 
 /***/ }),
 
+/***/ "./src/js/parts/tab.js":
+/*!*****************************!*\
+  !*** ./src/js/parts/tab.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var tab = function tab(big, item, slider, blockName, index) {
+  'use strict'; // ---------
+  // ----- Tab
+  // ---------
+
+  var hideBig = function hideBig(a) {
+    for (var i = a; i < big.length; i++) {
+      big[i].classList.remove('show');
+      big[i].classList.add('hide');
+
+      switch (index) {
+        case 0:
+          item[i].firstElementChild.classList.remove('after_click');
+          break;
+
+        case 1:
+          item[i].children[1].classList.remove('active');
+          break;
+
+        case 2:
+          item[i].classList.remove('active');
+          break;
+      }
+    }
+  };
+
+  hideBig(1);
+
+  var showBig = function showBig(b) {
+    if (big[b].classList.contains('hide')) {
+      big[b].classList.remove('hide');
+      big[b].classList.add('show');
+
+      switch (index) {
+        case 0:
+          item[b].firstElementChild.classList.add('after_click');
+          break;
+
+        case 1:
+          item[b].children[1].classList.add('active');
+          break;
+
+        case 2:
+          item[b].classList.add('active');
+          break;
+      }
+    }
+  };
+
+  slider.addEventListener('click', function (e) {
+    e.preventDefault();
+    var tar = e.target,
+        tg = 'tar.tagName == blockName',
+        cn = 'tar.classList.contains(blockName)',
+        condition = index == 2 ? tg : cn;
+
+    while ((tar = tar.parentElement) && !eval(condition)) {
+      ;
+    }
+
+    if (tar && eval(condition)) {
+      for (var i = 0; i < item.length; i++) {
+        if (tar == item[i]) {
+          hideBig(0);
+          showBig(i);
+          if (index == 2) Information.windowType = i + 1;
+          break;
+        }
+      }
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (tab);
+
+/***/ }),
+
 /***/ "./src/js/parts/tabs.js":
 /*!******************************!*\
   !*** ./src/js/parts/tabs.js ***!
@@ -2453,51 +2473,19 @@ var modal = function modal() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tab */ "./src/js/parts/tab.js");
+
+
 var tabs = function tabs() {
   'use strict'; // --------------
   // ----- CalcTabs
   // --------------
 
   var tabs = document.querySelector('.decoration'),
-      tab = tabs.querySelectorAll('.decoration_item'),
+      item = tabs.querySelectorAll('.decoration_item'),
       info = tabs.querySelector('.decoration_slider'),
       tabContent = tabs.querySelectorAll('.decoration_block');
-
-  var hideTabContent = function hideTabContent(a) {
-    for (var i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove('show');
-      tabContent[i].classList.add('hide');
-      tab[i].firstElementChild.classList.remove('after_click');
-    }
-  };
-
-  hideTabContent(1);
-
-  var showTabContent = function showTabContent(b) {
-    if (tabContent[b].classList.contains('hide')) {
-      tabContent[b].classList.remove('hide');
-      tabContent[b].classList.add('show');
-      tab[b].firstElementChild.classList.add('after_click');
-    }
-  };
-
-  info.addEventListener('click', function (e) {
-    var tar = e.target;
-
-    while ((tar = tar.parentElement) && !tar.classList.contains('decoration_item')) {
-      ;
-    }
-
-    if (tar && tar.classList.contains('decoration_item')) {
-      for (var i = 0; i < tab.length; i++) {
-        if (tar == tab[i]) {
-          hideTabContent(0);
-          showTabContent(i);
-          break;
-        }
-      }
-    }
-  });
+  Object(_tab__WEBPACK_IMPORTED_MODULE_0__["default"])(tabContent, item, info, 'decoration_item', 0);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (tabs);
