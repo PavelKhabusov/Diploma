@@ -2342,36 +2342,24 @@ var modal = function modal() {
       overlay = document.querySelector('.popup_engineer'),
       overlayLink = document.querySelector('.popup');
 
-  function showModal(element) {
-    element.style.display = 'block';
-    element.classList.add('over');
-    document.body.parentElement.style.overflow = 'hidden';
-  }
+  var bindModal = function bindModal(btn, overlayStatus, overflowStatus) {
+    btn.style.display = overlayStatus;
+    overflowStatus == '' ? btn.classList.add('over') : btn.classList.remove('over');
+    document.body.parentElement.style.overflow = overflowStatus;
+  };
 
-  function openModal(elem, mod) {
-    document.addEventListener('click', function (e) {
-      var t = e.target;
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    e.preventDefault();
+    t.classList.contains(more) ? bindModal(overlay, 'block', 'hidden') : '';
+    t.classList.contains(moreLink) ? bindModal(overlayLink, 'block', 'hidden') : '';
 
-      if (t && t.classList.contains(elem)) {
-        e.preventDefault();
-        showModal(mod);
-      }
-
-      while (t.tagName == 'STRONG') {
-        t = t.parentElement;
-      }
-
-      if (t && t.classList.contains('over') || t.classList.contains('popup_close')) {
-        mod.style.display = 'none';
-        mod.classList.remove('over');
-        document.body.parentElement.style.overflow = '';
-      }
-    });
-  }
-
-  openModal(more, overlay);
-  openModal(moreLink, overlayLink);
-  setTimeout(showModal, 60000, overlayLink);
+    if (t.classList.contains('over') || t.classList.contains('popup_close')) {
+      bindModal(overlay, 'none', '');
+      bindModal(overlayLink, 'none', '');
+    }
+  });
+  setTimeout(bindModal, 60000, overlayLink, 'block', 'hidden');
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modal);

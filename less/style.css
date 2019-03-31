@@ -1450,6 +1450,11 @@ textarea:focus {
     border: none;
     background: transparent;
   }
+  .popup_close strong,
+  .popup_engineer_close strong,
+  .popup_calc_end_close strong {
+    pointer-events: none;
+  }
   .popup_calc_close {
     position: absolute;
     top: -1rem;
