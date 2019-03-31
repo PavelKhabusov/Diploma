@@ -16,27 +16,32 @@ let calc = () => {
 	// Variables
 	let btn = 'glazing_price_btn',
       modal = document.querySelector('.popup_calc'),
-			close = modal.querySelector('.popup_calc_close'),
+			close = 'popup_calc_close',
 			info = modal.querySelector('.balcon_icons'),
       item = info.querySelectorAll('a'),
 			tabContent = modal.querySelectorAll('.big_img img'),
 			width = modal.querySelector('#width'),
 			height = modal.querySelector('#height'), 
 
-			profileButton = modal.querySelector('.popup_calc_button'),
+			profileButton = 'popup_calc_button',
 			profile = document.querySelector('.popup_calc_profile'),
-			profileClose = profile.querySelector('.popup_calc_profile_close'),
+			profileClose = 'popup_calc_profile_close',
 			profileSelect = profile.querySelector('select'),
 			profileCheck = profile.querySelectorAll('input[type="checkbox"]'),
 			
-			endButton = profile.querySelector('.popup_calc_profile_button'),
 			end = document.querySelector('.popup_calc_end'),
-			endClose = end.querySelector('.popup_calc_end_close'),
+			endButton = 'popup_calc_profile_button',
+			endClose = 'popup_calc_end_close',
 			endInputs = end.querySelectorAll('input');
-	// Close
-	let Close = (popup, btn) => {
-		btn.addEventListener('click', () => {
-			popup.style.display = 'none';
+
+document.body.addEventListener('click', function(e) {
+	let t = e.target;
+	if(t) {
+		// Close
+		if(t.classList.contains(close) || t.classList.contains(profileClose) || t.classList.contains(endClose)) {
+			modal.style.display = 'none';
+			profile.style.display = 'none';
+			end.style.display = 'none';
 			document.body.parentElement.style.overflow = '';
 			width.value = '';
 			height.value = '';
@@ -53,21 +58,36 @@ let calc = () => {
 				endInputs[i].value = '';
 			}
 			if(end.querySelector('.status')) end.querySelector('.status').remove();
-		});
+		}
+	// First Popup
+		// Open
+		if(t.classList.contains(btn)) {
+			modal.style.display = 'block';
+			document.body.parentElement.style.overflow = 'hidden';
+		}
+		// Next Button 
+		if(t.classList.contains(profileButton)) {
+			if(Information.windowType != '' && Information.windowWidth != '' && Information.windowHeight != '') {
+				modal.style.display = 'none';
+				profile.style.display = 'block';
+			} else {
+				alert('Ошибка! Неверно введены данные!');
+			}
+		}
+
+	// Second Popup
+		// Next Button
+		if(t.classList.contains(endButton)) {
+			if(Information.temperature != '' && Information.glazing != '') {
+				profile.style.display = 'none';
+				end.style.display = 'block';
+			} else {
+				alert('Ошибка! Неверно введены данные!');
+			}
+		}
 	}
-	Close(modal, close);
-	Close(profile, profileClose);
-	Close(end, endClose);
-// First Popup
-	// Open
-  document.addEventListener('click', function(e) {
-    let t = e.target;
-    if(t && t.classList.contains(btn)) {
-      modal.style.display = 'block';
-      document.body.parentElement.style.overflow = 'hidden';
-    }
-  });
-  
+});
+
 	// Tabs
 	tab(tabContent, item, info, 'A', 2);
 
@@ -92,16 +112,6 @@ let calc = () => {
     }
 	});
 
-	// Next Button 
-	profileButton.addEventListener('click', () => {
-		if(Information.windowType != '' && Information.windowWidth != '' && Information.windowHeight != '') {
-			modal.style.display = 'none';
-			profile.style.display = 'block';
-		} else {
-			alert('Ошибка! Неверно введены данные!');
-		}
-	});
-	
 // Second Popup
 	// Select
 	profileSelect.addEventListener('change', function() {
@@ -120,14 +130,5 @@ let calc = () => {
 		});
 	});
 
-	// Next Button 
-	endButton.addEventListener('click', () => {
-		if(Information.temperature != '' && Information.glazing != '') {
-			profile.style.display = 'none';
-			end.style.display = 'block';
-		} else {
-			alert('Ошибка! Неверно введены данные!');
-		}
-	});
 }
 export default calc;

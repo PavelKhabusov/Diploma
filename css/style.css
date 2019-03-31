@@ -749,6 +749,11 @@ textarea:focus {
   border: none;
   background: transparent;
 }
+.popup_close strong,
+.popup_engineer_close strong,
+.popup_calc_end_close strong {
+  pointer-events: none;
+}
 .popup_calc {
   display: none;
   position: fixed;
@@ -806,6 +811,9 @@ textarea:focus {
   color: #ffffff;
   border: none;
   background: transparent;
+}
+.popup_calc_close strong {
+  pointer-events: none;
 }
 .popup_calc input {
   display: inline-block;
@@ -917,6 +925,9 @@ textarea:focus {
   color: #ffffff;
   border: none;
   background: transparent;
+}
+.popup_calc_profile_close strong {
+  pointer-events: none;
 }
 .popup_calc_profile_button {
   display: block;
