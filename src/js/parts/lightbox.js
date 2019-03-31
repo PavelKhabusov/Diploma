@@ -6,7 +6,7 @@ let lightbox = () => {
   let overlay = document.createElement('div');
       overlay.classList.add('works_overlay');
 
-  document.addEventListener('click', (e) => {
+  document.body.addEventListener('click', (e) => {
     let t = e.target;
     if(t.classList.contains('works_overlay')){
       overlay.parentElement.removeChild(overlay);

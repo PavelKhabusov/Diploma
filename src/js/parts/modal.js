@@ -16,11 +16,11 @@ let modal = () => {
   document.body.addEventListener('click', (e) => {
     let t = e.target;
     (t.classList.contains(more)) ? bindModal(overlay, 'block', 'hidden') :
-    (t.classList.contains(moreLink)) ? (e.preventDefault(), bindModal(overlayLink, 'block', 'hidden')) : '';
-    if (t.classList.contains('over') || t.classList.contains('popup_close')) {
-      bindModal(overlay, 'none', '');
-      bindModal(overlayLink, 'none', '');
-    }
+    (t.classList.contains(moreLink)) ? (e.preventDefault(), 
+      bindModal(overlayLink, 'block', 'hidden')) : 
+    (t.classList.contains('over') || t.classList.contains('popup_close')) ? (
+      bindModal(overlay, 'none', ''),
+      bindModal(overlayLink, 'none', '')) : '';
   });
 
   setTimeout(bindModal, 60000, overlayLink, 'block', 'hidden');

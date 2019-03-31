@@ -2289,7 +2289,7 @@ var lightbox = function lightbox() {
 
   var overlay = document.createElement('div');
   overlay.classList.add('works_overlay');
-  document.addEventListener('click', function (e) {
+  document.body.addEventListener('click', function (e) {
     var t = e.target;
 
     if (t.classList.contains('works_overlay')) {
@@ -2342,12 +2342,7 @@ var modal = function modal() {
 
   document.body.addEventListener('click', function (e) {
     var t = e.target;
-    t.classList.contains(more) ? bindModal(overlay, 'block', 'hidden') : t.classList.contains(moreLink) ? (e.preventDefault(), bindModal(overlayLink, 'block', 'hidden')) : '';
-
-    if (t.classList.contains('over') || t.classList.contains('popup_close')) {
-      bindModal(overlay, 'none', '');
-      bindModal(overlayLink, 'none', '');
-    }
+    t.classList.contains(more) ? bindModal(overlay, 'block', 'hidden') : t.classList.contains(moreLink) ? (e.preventDefault(), bindModal(overlayLink, 'block', 'hidden')) : t.classList.contains('over') || t.classList.contains('popup_close') ? (bindModal(overlay, 'none', ''), bindModal(overlayLink, 'none', '')) : '';
   });
   setTimeout(bindModal, 60000, overlayLink, 'block', 'hidden');
 };
