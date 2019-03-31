@@ -34,9 +34,8 @@ let calc = () => {
 			endClose = 'popup_calc_end_close',
 			endInputs = end.querySelectorAll('input');
 
-document.body.addEventListener('click', function(e) {
-	let t = e.target;
-	if(t) {
+	document.body.addEventListener('click', (e) => {
+		let t = e.target;
 		// Close
 		if(t.classList.contains(close) || t.classList.contains(profileClose) || t.classList.contains(endClose)) {
 			modal.style.display = 'none';
@@ -85,31 +84,25 @@ document.body.addEventListener('click', function(e) {
 				alert('Ошибка! Неверно введены данные!');
 			}
 		}
-	}
-});
+	});
 
 	// Tabs
 	tab(tabContent, item, info, 'A', 2);
 
-  // Width & Height
-	width.addEventListener('change', () => {
-		Information.windowWidth = width.value;
+	// Width & Height
+	document.body.addEventListener('change', function(e) {
+		let t = e.target;
+		(t.id == 'width') ? Information.windowWidth = this.value : '';
+		(t.id == 'height') ? Information.windowHeight = this.value : '';
 	});
-	width.addEventListener('keypress', function(e) {
-		var keycode = (e.keyCode ? e.keyCode : e.which);
-    if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
-        e.preventDefault();
-    }
-	});
-	
-	height.addEventListener('change', () => {
-		Information.windowHeight = height.value;
-	});
-	height.addEventListener('keypress', function(e) {
-		var keycode = (e.keyCode ? e.keyCode : e.which);
-    if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
-        e.preventDefault();
-    }
+	document.body.addEventListener('keypress', (e) => {
+		let t = e.target;
+		if(t.id == 'width' || t.id == 'height') {
+			var keycode = (e.keyCode ? e.keyCode : e.which);
+			if (/\D/.test(String.fromCharCode(keycode))) { // a non–digit was entered
+					e.preventDefault();
+			}
+		}
 	});
 
 // Second Popup
@@ -120,7 +113,8 @@ document.body.addEventListener('click', function(e) {
 
 	// Checkboxes
 	profileCheck.forEach(function(item, i, arr) {
-		item.addEventListener('change', () => {
+		item.addEventListener('change', function() {
+			console.log(true);
 			if(item.checked) {
 				arr[i == 0 ? 1 : 0].checked = false;
 				Information.temperature = i ? 'warm' : 'cold';
@@ -129,6 +123,5 @@ document.body.addEventListener('click', function(e) {
 			}
 		});
 	});
-
 }
 export default calc;

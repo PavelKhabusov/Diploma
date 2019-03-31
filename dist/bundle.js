@@ -2044,89 +2044,81 @@ var calc = function calc() {
       endClose = 'popup_calc_end_close',
       endInputs = end.querySelectorAll('input');
   document.body.addEventListener('click', function (e) {
-    var t = e.target;
+    var t = e.target; // Close
 
-    if (t) {
-      // Close
-      if (t.classList.contains(close) || t.classList.contains(profileClose) || t.classList.contains(endClose)) {
+    if (t.classList.contains(close) || t.classList.contains(profileClose) || t.classList.contains(endClose)) {
+      modal.style.display = 'none';
+      profile.style.display = 'none';
+      end.style.display = 'none';
+      document.body.parentElement.style.overflow = '';
+      width.value = '';
+      height.value = '';
+
+      for (var key in Information) {
+        Information[key] = '';
+      }
+
+      for (var i = 0; i < tabContent.length; i++) {
+        item[i].classList.remove('active');
+      }
+
+      profileSelect[0].selected = true;
+      profileCheck[0].checked = false;
+      profileCheck[1].checked = false;
+
+      for (var _i = 0; _i < endInputs.length; _i++) {
+        endInputs[_i].value = '';
+      }
+
+      if (end.querySelector('.status')) end.querySelector('.status').remove();
+    } // First Popup
+    // Open
+
+
+    if (t.classList.contains(btn)) {
+      modal.style.display = 'block';
+      document.body.parentElement.style.overflow = 'hidden';
+    } // Next Button 
+
+
+    if (t.classList.contains(profileButton)) {
+      if (Information.windowType != '' && Information.windowWidth != '' && Information.windowHeight != '') {
         modal.style.display = 'none';
+        profile.style.display = 'block';
+      } else {
+        alert('Ошибка! Неверно введены данные!');
+      }
+    } // Second Popup
+    // Next Button
+
+
+    if (t.classList.contains(endButton)) {
+      if (Information.temperature != '' && Information.glazing != '') {
         profile.style.display = 'none';
-        end.style.display = 'none';
-        document.body.parentElement.style.overflow = '';
-        width.value = '';
-        height.value = '';
-
-        for (var key in Information) {
-          Information[key] = '';
-        }
-
-        for (var i = 0; i < tabContent.length; i++) {
-          item[i].classList.remove('active');
-        }
-
-        profileSelect[0].selected = true;
-        profileCheck[0].checked = false;
-        profileCheck[1].checked = false;
-
-        for (var _i = 0; _i < endInputs.length; _i++) {
-          endInputs[_i].value = '';
-        }
-
-        if (end.querySelector('.status')) end.querySelector('.status').remove();
-      } // First Popup
-      // Open
-
-
-      if (t.classList.contains(btn)) {
-        modal.style.display = 'block';
-        document.body.parentElement.style.overflow = 'hidden';
-      } // Next Button 
-
-
-      if (t.classList.contains(profileButton)) {
-        if (Information.windowType != '' && Information.windowWidth != '' && Information.windowHeight != '') {
-          modal.style.display = 'none';
-          profile.style.display = 'block';
-        } else {
-          alert('Ошибка! Неверно введены данные!');
-        }
-      } // Second Popup
-      // Next Button
-
-
-      if (t.classList.contains(endButton)) {
-        if (Information.temperature != '' && Information.glazing != '') {
-          profile.style.display = 'none';
-          end.style.display = 'block';
-        } else {
-          alert('Ошибка! Неверно введены данные!');
-        }
+        end.style.display = 'block';
+      } else {
+        alert('Ошибка! Неверно введены данные!');
       }
     }
   }); // Tabs
 
   Object(_tab__WEBPACK_IMPORTED_MODULE_0__["default"])(tabContent, item, info, 'A', 2); // Width & Height
 
-  width.addEventListener('change', function () {
-    Information.windowWidth = width.value;
+  document.body.addEventListener('change', function (e) {
+    var t = e.target;
+    t.id == 'width' ? Information.windowWidth = this.value : '';
+    t.id == 'height' ? Information.windowHeight = this.value : '';
   });
-  width.addEventListener('keypress', function (e) {
-    var keycode = e.keyCode ? e.keyCode : e.which;
+  document.body.addEventListener('keypress', function (e) {
+    var t = e.target;
 
-    if (/\D/.test(String.fromCharCode(keycode))) {
-      // a non–digit was entered
-      e.preventDefault();
-    }
-  });
-  height.addEventListener('change', function () {
-    Information.windowHeight = height.value;
-  });
-  height.addEventListener('keypress', function (e) {
-    var keycode = e.keyCode ? e.keyCode : e.which;
+    if (t.id == 'width' || t.id == 'height') {
+      var keycode = e.keyCode ? e.keyCode : e.which;
 
-    if (/\D/.test(String.fromCharCode(keycode))) {
-      // a non–digit was entered
-      e.preventDefault();
+      if (/\D/.test(String.fromCharCode(keycode))) {
+        // a non–digit was entered
+        e.preventDefault();
+      }
     }
   }); // Second Popup
   // Select
@@ -2137,6 +2129,8 @@ var calc = function calc() {
 
   profileCheck.forEach(function (item, i, arr) {
     item.addEventListener('change', function () {
+      console.log(true);
+
       if (item.checked) {
         arr[i == 0 ? 1 : 0].checked = false;
         Information.temperature = i ? 'warm' : 'cold';
@@ -2298,23 +2292,21 @@ var lightbox = function lightbox() {
   document.addEventListener('click', function (e) {
     var t = e.target;
 
-    if (t) {
-      if (t.classList.contains('works_overlay')) {
-        overlay.parentElement.removeChild(overlay);
-        document.body.parentElement.style.overflow = '';
-      }
+    if (t.classList.contains('works_overlay')) {
+      overlay.parentElement.removeChild(overlay);
+      document.body.parentElement.style.overflow = '';
+    }
 
-      if (t.classList.contains('lightbox') && t.tagName == 'IMG' && !t.classList.contains('lupa')) {
-        e.preventDefault();
-        overlay.innerHTML = '';
-        var block = document.createElement('img'),
-            tsrc = t.getAttribute('src');
-        tsrc = tsrc.slice(0, 13) + "/big_img" + tsrc.slice(13, tsrc.length);
-        block.setAttribute("src", tsrc);
-        overlay.appendChild(block);
-        document.body.appendChild(overlay);
-        document.body.parentElement.style.overflow = 'hidden';
-      }
+    if (t.classList.contains('lightbox') && t.tagName == 'IMG' && !t.classList.contains('lupa')) {
+      e.preventDefault();
+      overlay.innerHTML = '';
+      var block = document.createElement('img'),
+          tsrc = t.getAttribute('src');
+      tsrc = tsrc.slice(0, 13) + "/big_img" + tsrc.slice(13, tsrc.length);
+      block.setAttribute("src", tsrc);
+      overlay.appendChild(block);
+      document.body.appendChild(overlay);
+      document.body.parentElement.style.overflow = 'hidden';
     }
   });
 };
@@ -2344,15 +2336,13 @@ var modal = function modal() {
 
   var bindModal = function bindModal(btn, overlayStatus, overflowStatus) {
     btn.style.display = overlayStatus;
-    overflowStatus == '' ? btn.classList.add('over') : btn.classList.remove('over');
+    overflowStatus != '' ? btn.classList.add('over') : btn.classList.remove('over');
     document.body.parentElement.style.overflow = overflowStatus;
   };
 
-  document.addEventListener('click', function (e) {
+  document.body.addEventListener('click', function (e) {
     var t = e.target;
-    e.preventDefault();
-    t.classList.contains(more) ? bindModal(overlay, 'block', 'hidden') : '';
-    t.classList.contains(moreLink) ? bindModal(overlayLink, 'block', 'hidden') : '';
+    t.classList.contains(more) ? bindModal(overlay, 'block', 'hidden') : t.classList.contains(moreLink) ? (e.preventDefault(), bindModal(overlayLink, 'block', 'hidden')) : '';
 
     if (t.classList.contains('over') || t.classList.contains('popup_close')) {
       bindModal(overlay, 'none', '');
