@@ -40,14 +40,14 @@ let tab = (big, item, slider, blockName, index) => {
   }
   slider.addEventListener('click', function(e) {
     e.preventDefault();
-    let tar = e.target,
-        tg = 'tar.tagName == blockName',
-        cn = 'tar.classList.contains(blockName)',
+    let t = e.target,
+        tg = 't.tagName == blockName',
+        cn = 't.classList.contains(blockName)',
         condition = (index == 2 ? tg : cn);
-    while ((tar = tar.parentElement) && !eval(condition));
-    if(tar && eval(condition)) {
+    while ((t = t.parentElement) && !eval(condition));
+    if(eval(condition)) {
       for(let i = 0; i < item.length; i++) {
-        if(tar == item[i]) {
+        if(t == item[i]) {
           hideBig(0);
           showBig(i);
           if(index == 2) Information.windowType = i+1;
