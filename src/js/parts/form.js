@@ -12,8 +12,8 @@ let form = () => {
 			statusMessage = document.createElement('div');
 			statusMessage.classList.add('status');
 	function sendForm(elem) {
-    let input = elem.querySelectorAll('input');
-    let tel_mask = input[1];
+		let input = elem.querySelectorAll('input'),
+				tel_mask = input[1];
     tel_mask.addEventListener('keypress', function() {
       var that = this;
       setTimeout(function() {
@@ -36,7 +36,7 @@ let form = () => {
 					let request = new XMLHttpRequest();
 					request.open('POST', 'server.php');
 					request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-
+				
 					request.onreadystatechange = function() {
 						if(request.readyState < 4) {
 							resolve()

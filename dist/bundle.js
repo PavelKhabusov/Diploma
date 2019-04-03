@@ -2207,8 +2207,8 @@ var form = function form() {
   statusMessage.classList.add('status');
 
   function sendForm(elem) {
-    var input = elem.querySelectorAll('input');
-    var tel_mask = input[1];
+    var input = elem.querySelectorAll('input'),
+        tel_mask = input[1];
     tel_mask.addEventListener('keypress', function () {
       var that = this;
       setTimeout(function () {
